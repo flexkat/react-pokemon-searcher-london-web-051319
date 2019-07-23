@@ -13,11 +13,22 @@ class PokemonForm extends React.Component {
     }
   }
 
+  handleSubmit = (event) => {
+    event.preventDefault
+    this.props.updatePokemon(this.state)
+  }
+
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
   render() {
     return (
       <div>
         <h3>Add a Pokemon!</h3>
-        <Form onSubmit={this.handleSubmit}>
+        <Form onSubmit={this.handleSubmit} onChange={this.handleChange}>
           <Form.Group widths="equal">
             <Form.Input fluid label="Name" placeholder="Name" name="name" />
             <Form.Input fluid label="hp" placeholder="hp" name="hp" />
